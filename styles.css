@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    overflow: hidden;
+}
+#timeMade{
+    font-family: 'Aref Ruqaa', serif; /* Use Aref Ruqaa */
+    font-weight: 700; /* Apply the bold style */
+    font-size: 1rem;
+    color: black;
+    position:absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+}
+#mainBackground{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color:pink;
+    display: flex;
+    justify-content: center;
+}
+#content{
+    margin-top: 15vh;
+}
+#content h1{
+    font-family:  'Dancing Script', cursive;
+    font-weight: 700; /* Apply the bold style */
+    font-size: 7.5rem; /* Increased size to suit the font */
+    color:purple;
+    width: fit-content;
+    margin: auto;
+}
+#content h2{
+    margin-top: 2vh;
+    font-family:  'Dancing Script', cursive;
+    font-weight: 700; /* Apply the bold style */
+    font-size: 5rem; /* Increased size to suit the font */
+    color:purple;
+    width: fit-content;
+    margin-right: auto;
+    margin-left: auto;
+
+}
+#content h3{
+    font-family: 'Aref Ruqaa', serif; /* Use Aref Ruqaa */
+}
+@media (max-width: 800px)
+{
+    #content h1{
+        font-size: 3rem;
+    }
+}
+#aineImage{
+    position: relative;
+    width: 100%;
+    height: 50%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+#imageBackground{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:url('../Assets/FlowerBg2.jpg');
+    background-size: cover;     /* Make image cover the div */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /*no repeat */ 
+    opacity:0.65;
+    z-index: 1;
+}
+#mainBackground > *:not(#imageBackground) {
+    position: relative;
+    z-index: 2;
+}
