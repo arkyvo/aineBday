@@ -206,7 +206,7 @@ html, body{
 
 #timer > div {
     background-color: hsl(0, 16%, 89%);
-    margin: 20px 25px 20px 0;
+    margin: 2svw 2svw 2svw 0;
     border-radius:3svw;
 }
 
