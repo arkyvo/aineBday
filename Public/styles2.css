@@ -231,7 +231,7 @@ div#sec
 .polaroid-border{
     position: relative;
     display: flex;
-    padding: 4svw;
+    padding: 2svw;
     justify-content: center;
     margin: 5svh 0 5svh;                      /* No individual margins; use container gap */
     flex-basis: calc(50% - 1svw);   /* 50% width minus half-gap: Fits exactly 2 per row */
