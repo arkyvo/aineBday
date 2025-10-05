@@ -212,12 +212,12 @@ html, body{
 
 div#sec
 {
-    margin: 20px 0px 20px 0;
+    margin: 2svw 0 2svw 0;
 }
 
 #timer span {
     width: 15svw;
-    height: 12svw;
+    height: 10svw;
     display: block;
     font-size: 9svw;
     font-weight: 700;
