@@ -219,12 +219,12 @@ div#sec
     width: 15svw;
     height: 10svw;
     display: block;
-    font-size: 9svw;
+    font-size: 8svw;
     font-weight: 700;
 }
 
 #timer .label {
-    font-size: 3.5svw;
+    font-size: 3.3svw;
     color: #555;
 }
 
