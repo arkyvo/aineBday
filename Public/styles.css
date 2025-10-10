@@ -91,7 +91,7 @@ html, body{
     margin-bottom: 2svh;
     margin-left: auto;
     margin-right: auto;
-    background-image:url('../Assets/Aine1.JPG');
+    background-image:url('../Assets/aine1.JPG');
     background-size: cover;     /* Make image cover the div */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /*no repeat */ 
@@ -130,6 +130,7 @@ html, body{
     background-size: contain;
     background-position: center; /* Center the image */
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 #time{
@@ -138,6 +139,8 @@ html, body{
     background-image:url('../Assets/clock1.jpg');
     background-size: cover;
 }
+
+
 
 
 @media (max-width: 800px)
@@ -177,7 +180,6 @@ html, body{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top: 3vh;
     z-index: 2;
     align-items: center;
     width: 80svw;
@@ -233,7 +235,7 @@ div#sec
     display: flex;
     padding: 3svw;
     justify-content: center;
-    margin: 5svh 0px 8svh 0px;
+    margin: 5svh 0px 7svh 0px;
     width: 60svw; /*40 if inline-block*/
     height: auto;
     border-radius: 2px;
@@ -252,4 +254,47 @@ div#sec
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+
+
+/*card.html*/
+#cMainBackground{
+    position: relative;
+    display:flex;
+    width: 100vw;
+    min-height: 100svh;
+    background-color:pink;
+    overflow: hidden;
+    justify-content: center;
+}
+#cContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 3vh;
+    z-index: 2;
+    align-items: center;
+    width: 92svw;
+    height: calc(100svh - 3vh);
+    overflow-y: auto;
+}
+
+#cMainBackground #imageBackground{
+    opacity:0.5;
+
+}
+.card-border{
+    z-index: 2;
+    position: relative;
+    display: flex;
+    padding: 3svw;
+    justify-content: center;
+    margin: 5svh 0px 8svh 0px;
+    width: 70svw; /*40 if inline-block*/
+    height: 40svh;
+    border-radius: 2px;
+    max-height: 95%;
+    aspect-ratio: 1/1;
+    background-color: rgba(249, 236, 204);
 }
