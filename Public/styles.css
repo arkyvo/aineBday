@@ -288,7 +288,7 @@ div#sec
     padding: 3svw;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 25svh 0px 8svh 0px;
+    margin: 15svh 0px 8svh 0px;
     width: 70svw; /*40 if inline-block*/
     height: auto;
     max-height: 45svh;
