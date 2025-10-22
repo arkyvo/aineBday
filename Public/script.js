@@ -30,3 +30,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = '../Rsrc/time.html'; // Navigate to your new page
   });
 });
+
