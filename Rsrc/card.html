@@ -22,6 +22,7 @@
                     <p>Araw-Araw</p>
                     <p>Ben&Ben</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/arawAraw.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/theNightWeMet.jpg')"></div>
@@ -30,6 +31,7 @@
                     <p>The Night We Met</p>
                     <p>Lord Huron</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/theNightWeMet.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/walkingBackHome.png')"></div>
@@ -38,6 +40,7 @@
                     <p>Walking Back Home</p>
                     <p>FUR</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/walkingBackHome.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/shotPuno.jpg')"></div>
@@ -46,6 +49,7 @@
                     <p>Shot Puno</p>
                     <p>Juan Karlos</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/shotPuno.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/thoseEyes.jpg')"></div>
@@ -54,6 +58,7 @@
                     <p>Those Eyes</p>
                     <p>New West</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/thoseEyes.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/solomon.jpg')"></div>
@@ -62,6 +67,7 @@
                     <p>Solomon</p>
                     <p>Munimuni, Claire Benin</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/solomon.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/janice.jpg')"></div>
@@ -70,14 +76,16 @@
                     <p>Janice</p>
                     <p>Dilaw</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/janice.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/kalachuci.jpg')"></div>
                 <p class = "qoute">"Nasa'yong daliri ang init na bubuhay sa'kin"</p>
                 <div class = "card-info">
-                    <p>Shot Puno</p>
-                    <p>Juan Karlos</p>
+                    <p>Kalachuchi</p>
+                    <p>Munimuni</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/kalachuchi.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/iHearASymphony.jpg')"></div>
@@ -86,6 +94,7 @@
                     <p>I Hear A Symphony</p>
                     <p>Cody Fry</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/iHearASymphony.mp3"></audio>
             </div>
             <div class = "card-border">
                 <div class ="card-photo" style="background-image: url('../Assets/Cards/courage.jpg')"></div>
@@ -94,10 +103,111 @@
                     <p>Courage</p>
                     <p>Ben&Ben</p>
                 </div>
+                <audio class="card-audio" src="../Assets/Music/courage.mp3"></audio>
             </div>
         </div>
         <div id = "imageBackground" ></div>
     </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card-border");
+    const container = document.getElementById("cContent");
+    let currentCardIndex = null;
+    let firstTapDone = false;
+    let isPausedByUser = false;
+
+    // -------------------------
+    // Function: Update Focus
+    // -------------------------
+    function updateFocus() {
+        const viewportCenter = window.innerHeight / 2;
+        let closestIndex = -1;
+        let minDistance = Infinity;
+
+        cards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const cardCenter = rect.top + rect.height / 2;
+            const distance = Math.abs(viewportCenter - cardCenter);
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestIndex = index;
+            }
+        });
+
+        if (closestIndex !== currentCardIndex) {
+            // Stop previous card’s audio
+            if (currentCardIndex !== null) {
+                const prevAudio = cards[currentCardIndex].querySelector(".card-audio");
+                if (prevAudio) {
+                    prevAudio.pause();
+                    prevAudio.currentTime = 0;
+                }
+            }
+
+            // Play new card’s audio (only after first tap)
+            const newAudio = cards[closestIndex].querySelector(".card-audio");
+            if (newAudio && firstTapDone && !isPausedByUser) {
+                newAudio.loop = true;
+                newAudio.currentTime = 0;
+                newAudio.play().catch(() => {
+                    console.log(`Autoplay blocked for card ${closestIndex + 1}`);
+                });
+            }
+
+            currentCardIndex = closestIndex;
+            console.log(`🎵 Card ${currentCardIndex + 1} in focus`);
+        }
+    }
+
+    // -------------------------
+    // Scroll Listener
+    // -------------------------
+    container.addEventListener("scroll", () => {
+        requestAnimationFrame(updateFocus);
+    });
+
+    // -------------------------
+    // Tap Listener
+    // -------------------------
+    document.addEventListener("click", (e) => {
+        const isInsideCard = e.target.closest(".card-border");
+        const currentAudio =
+            currentCardIndex !== null
+                ? cards[currentCardIndex].querySelector(".card-audio")
+                : null;
+
+        // 1️⃣ First tap unlocks audio
+        if (!firstTapDone) {
+            firstTapDone = true;
+            console.log("🔊 Audio unlocked on first tap");
+            if (currentAudio) {
+                currentAudio.loop = true;
+                currentAudio.play().catch(() => console.log("Blocked"));
+            }
+            return;
+        }
+
+        // 2️⃣ Later taps outside toggle pause/resume
+        if (!isInsideCard && currentAudio) {
+            if (!isPausedByUser && !currentAudio.paused) {
+                currentAudio.pause();
+                isPausedByUser = true;
+                console.log("⏸️ Audio paused");
+            } else {
+                currentAudio.play().catch(() => console.log("Resume blocked"));
+                isPausedByUser = false;
+                console.log("▶️ Audio resumed");
+            }
+        }
+    });
+
+    updateFocus();
+});
+</script>
+
+
+
+
 </body>
 
 </html>

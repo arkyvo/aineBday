@@ -277,10 +277,14 @@ div#sec
     width: 92svw;
     height: calc(100svh - 3vh);
     overflow-y: auto;
+
+      scroll-snap-type: y mandatory;   /* vertical scroll snapping */
+    scroll-behavior: smooth;    
 }
 
 
 .card-border{
+     scroll-snap-align: center; 
     z-index: 4;
     position: relative;
     display: flex;
