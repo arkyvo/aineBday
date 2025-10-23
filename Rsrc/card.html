@@ -167,39 +167,53 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // -------------------------
-    // Tap Listener
-    // -------------------------
-    document.addEventListener("click", (e) => {
-        const isInsideCard = e.target.closest(".card-border");
-        const currentAudio =
-            currentCardIndex !== null
-                ? cards[currentCardIndex].querySelector(".card-audio")
-                : null;
+// Tap Listener (Fixed for Mobile)
+// -------------------------
+document.addEventListener("click", (e) => {
+    const isInsideCard = e.target.closest(".card-border");
+    const currentAudio =
+        currentCardIndex !== null
+            ? cards[currentCardIndex].querySelector(".card-audio")
+            : null;
 
-        // 1️⃣ First tap unlocks audio
-        if (!firstTapDone) {
-            firstTapDone = true;
-            console.log("🔊 Audio unlocked on first tap");
-            if (currentAudio) {
-                currentAudio.loop = true;
-                currentAudio.play().catch(() => console.log("Blocked"));
-            }
-            return;
-        }
+    // 1️⃣ First tap unlocks audio for ALL tracks
+    if (!firstTapDone) {
+        firstTapDone = true;
+        console.log("🔓 First tap — unlocking all audio elements");
 
-        // 2️⃣ Later taps outside toggle pause/resume
-        if (!isInsideCard && currentAudio) {
-            if (!isPausedByUser && !currentAudio.paused) {
-                currentAudio.pause();
-                isPausedByUser = true;
-                console.log("⏸️ Audio paused");
-            } else {
-                currentAudio.play().catch(() => console.log("Resume blocked"));
-                isPausedByUser = false;
-                console.log("▶️ Audio resumed");
+        cards.forEach((card) => {
+            const audio = card.querySelector(".card-audio");
+            if (audio) {
+                audio.muted = true;
+                audio.play().then(() => {
+                    audio.pause();
+                    audio.muted = false;
+                }).catch(() => {});
             }
+        });
+
+        // Start current audio right away
+        if (currentAudio) {
+            currentAudio.loop = true;
+            currentAudio.play().catch(() => console.log("Blocked"));
         }
-    });
+        return;
+    }
+
+    // 2️⃣ Later taps outside toggle pause/resume
+    if (!isInsideCard && currentAudio) {
+        if (!isPausedByUser && !currentAudio.paused) {
+            currentAudio.pause();
+            isPausedByUser = true;
+            console.log("⏸️ Audio paused");
+        } else {
+            currentAudio.play().catch(() => console.log("Resume blocked"));
+            isPausedByUser = false;
+            console.log("▶️ Audio resumed");
+        }
+    }
+});
+
 
     updateFocus();
 });
