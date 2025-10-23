@@ -77,7 +77,7 @@ html, body{
 .content h3{
     font-family: 'Aref Ruqaa', serif; /* Use Aref Ruqaa */
     font-weight: 700; /* Apply the bold style */
-    font-size: 3vw; /* Increased size to suit the font */
+    font-size: 4vw; /* Increased size to suit the font */
     width:fit-content;
     margin:auto;
 }
@@ -164,7 +164,9 @@ html, body{
     min-height: 100svh;
     background-color:pink;
     overflow: hidden;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 #container{
     z-index: 2;
@@ -270,7 +272,9 @@ div#sec
     min-height: 100svh;
     background-color:pink;
     overflow: hidden;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 #cContent{
     display: flex;
@@ -287,6 +291,19 @@ div#sec
     scroll-behavior: smooth;    
 }
 
+#backButton
+{
+    z-index: 4;
+    background-image: url('../Assets/arrow.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self:normal;
+    margin-left: 3svw;
+    margin-top: 2svw;
+    width: 70px;
+    height: 70px;
+}
 
 .card-border{
      scroll-snap-align: center; 
