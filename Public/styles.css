@@ -193,15 +193,24 @@ html, body{
     overflow-y: auto;
 }
 #tContent h3{
-    font-family: 'Aref Ruqaa', serif; /* Use Aref Ruqaa */
-    font-weight: 700; /* Apply the bold style */
+    font-family: "DynaPuff", system-ui; /* Use Aref Ruqaa */
+    font-weight: 300; /* Apply the bold style */
     font-size: 5svw; /* Increased size to suit the font */
     width:fit-content;
 }
 #tContent h4{
-    font-family: 'Aref Ruqaa', serif; /* Use Aref Ruqaa */
-    font-weight: 700; /* Apply the bold style */
+    margin-top: 1svw;;
+    font-family: "DynaPuff", system-ui; /* Use Aref Ruqaa */
+    font-weight: 300; /* Apply the bold style */
     font-size: 4svw; /* Increased size to suit the font */
+    width:fit-content;
+}
+
+#tContent h1{
+    margin-top: 6svw;;
+    font-family: "Sour Gummy", sans-serif; /* Use Aref Ruqaa */
+    font-weight: 300; /* Apply the bold style */
+    font-size: 15svw; /* Increased size to suit the font */
     width:fit-content;
 }
 #timer {
@@ -290,6 +299,21 @@ div#sec
       scroll-snap-type: y mandatory;   /* vertical scroll snapping */
     scroll-behavior: smooth;    
 }
+#top-text{
+    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+#cContent p.intro{
+
+    font-family: "DynaPuff", system-ui;
+    font-weight: 500; /* Apply the bold style */
+    font-size:4svw; /* Increased size to suit the font */
+}
 
 #backButton
 {
@@ -301,8 +325,8 @@ div#sec
     align-self:normal;
     margin-left: 3svw;
     margin-top: 2svw;
-    width: 70px;
-    height: 70px;
+    width: 3svw;
+    height: 3svw;
 }
 
 .card-border{
