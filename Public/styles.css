@@ -306,6 +306,7 @@ div#sec
   align-items: center;
   justify-content: center;
   height: fit-content;
+  margin-top: 5svw;
 }
 
 #cContent p.intro{
@@ -325,8 +326,8 @@ div#sec
     align-self:normal;
     margin-left: 3svw;
     margin-top: 2svw;
-    width: 3svw;
-    height: 3svw;
+    width: 4svw;
+    height: 4svw;
 }
 
 .card-border{
