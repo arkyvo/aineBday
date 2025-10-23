@@ -57,18 +57,17 @@ html, body{
     overflow-y: auto;
 }
 .content h1{
-    font-family:  'Dancing Script', cursive;
+    font-family: "DynaPuff", system-ui;
     font-weight: 700; /* Apply the bold style */
-    font-size:10.5vw; /* Increased size to suit the font */
+    font-size:12svw; /* Increased size to suit the font */
     color:purple;
     width: fit-content;
     margin: auto;
 }
 .content h2{
-    margin-top: 2svh;
-    font-family:  'Dancing Script', cursive;
+    font-family: 'Dancing Script', cursive;
     font-weight: 700; /* Apply the bold style */
-    font-size: 8vw; /* Increased size to suit the font */
+    font-size: 8.5vw; /* Increased size to suit the font */
     color:purple;
     width: fit-content;
     margin-right: auto;
@@ -91,8 +90,8 @@ html, body{
     margin-bottom: 2svh;
     margin-left: auto;
     margin-right: auto;
-    background-image:url('../Assets/aine1.JPG');
-    background-size: cover;     /* Make image cover the div */
+    background-image:url('../Assets/ainePoster.png');
+    background-size: contain;     /* Make image cover the div */
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /*no repeat */ 
 }
@@ -140,17 +139,6 @@ html, body{
 }
 
 
-
-
-@media (max-width: 800px)
-{
-    .content h1{
-        font-size: 3vw;
-    }
-    .content h2{
-        font-size: 1.5vw;
-    }
-}
 
 #tMainBackground{
     position: relative;
